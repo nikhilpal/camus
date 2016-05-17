@@ -58,6 +58,10 @@ func serverMain() {
 }
 
 func clientMain() {
+	if len(*targetName) == 0 {
+		log.Fatal("NewClient: Missing --target")
+	}
+
 	client, err := NewClient(*deployFile, TargetName(*targetName), *isLocalTest)
 	if err != nil {
 		log.Fatal("NewClient:", err)
